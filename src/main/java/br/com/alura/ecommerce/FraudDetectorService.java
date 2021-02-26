@@ -1,10 +1,8 @@
 package br.com.alura.ecommerce;
 
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.util.HashMap;
-import java.util.Properties;
 
 public class FraudDetectorService {
 
@@ -29,17 +27,10 @@ public class FraudDetectorService {
         System.out.println(record.partition());
         System.out.println(record.offset());
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
         System.out.println("Order successfully processed.");
-    }
-
-    private static Properties properties() {
-        var properties = new Properties();
-        properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, FraudDetectorService.class.getSimpleName());
-        properties.setProperty(ConsumerConfig.CLIENT_ID_CONFIG, FraudDetectorService.class.getSimpleName());
-        return properties;
     }
 }
